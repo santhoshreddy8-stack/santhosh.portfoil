@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portfolio • Santhosh Reddy</title>
+<meta name="description" content="Developer portfolio single-file HTML (no React)" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0b1020;
+    --card:#121935;
+    --text:#eaf0ff;
+    --muted:#a7b0d0;
+    --accent:#5b8cff;
+    --accent-2:#ff6aa6;
+    --accent-3:#ffb86b;
+    --maxw:1000px;
+    --radius:16px;
+    --shadow:0 8px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(91,140,255,.15), transparent 60%),
+      radial-gradient(1200px 600px at 110% 10%, rgba(255,106,166,.12), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    line-height:1.6;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(12px); background:rgba(10,15,35,.65); border-bottom:1px solid rgba(255,255,255,.06);}
+  .nav-inner{max-width:var(--maxw); margin:auto; padding:.75rem 1rem; display:flex; align-items:center; gap:1rem; justify-content:space-between;}
+  .brand{font-weight:800; letter-spacing:.5px}
+  .brand span{color:var(--accent)}
+  .nav a.link{display:inline-flex; gap:.5rem; align-items:center; color:var(--muted); padding:.4rem .8rem; border-radius:999px; transition:background .2s, color .2s, transform .2s;}
+  .nav a.link.active{color:var(--text); background:rgba(91,140,255,.15)}
+  .cta{background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#0d1024; font-weight:700; border-radius:999px; padding:.55rem 1rem; box-shadow:0 6px 20px rgba(91,140,255,.35);}
+  .cta:hover{transform:translateY(-1px); text-decoration:none}
+  .section{max-width:var(--maxw); margin:0 auto; padding:80px 16px}
+  .heading{font-size:clamp(1.6rem, 2.4vw + 1rem, 2.4rem); line-height:1.2; margin:0 0 16px}
+  .sub{color:var(--muted); margin:0 0 32px}
+  .grid{display:grid; gap:20px}
+  @media (min-width: 900px){ .grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:repeat(3,1fr)} }
+  .hero{padding:120px 16px 80px; max-width:var(--maxw); margin:0 auto; display:grid; gap:28px; grid-template-columns:1.1fr .9fr;}
+  @media (max-width:900px){ .hero{grid-template-columns:1fr; padding-top:90px} }
+  .tag{display:inline-block; padding:.25rem .7rem; border:1px solid rgba(255,255,255,.15); color:var(--muted); border-radius:999px; font-size:.85rem}
+  .title{font-size:clamp(2rem, 3.5vw + 1rem, 3.4rem); line-height:1.09; margin:.5rem 0 1rem}
+  .emph{background:linear-gradient(120deg,var(--accent) 0%, var(--accent-2) 60%, var(--accent-3) 100%); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow);}
+  .btn{display:inline-block; padding:.7rem 1.1rem; border-radius:12px; font-weight:600; background:#1a244a; border:1px solid rgba(255,255,255,.08); color:var(--text)}
+  .btn:hover{background:#223064}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow);}
+  .chip{display:inline-flex; align-items:center; gap:.5rem; padding:.35rem .7rem; border-radius:999px; border:1px solid rgba(255,255,255,.12); color:var(--muted); font-size:.85rem; margin:.25rem; background:rgba(255,255,255,.03)}
+  .chip img{width:18px; height:18px}
+  .footer{padding:40px 16px; text-align:center; color:var(--muted)}
+  form input, form textarea{width:100%; padding:10px; margin:6px 0; border-radius:8px; border:1px solid rgba(255,255,255,.1); background:#1a244a; color:var(--text);}
+  form button{margin-top:8px; padding:.6rem 1rem; border:none; border-radius:8px; background:var(--accent); color:#fff; font-weight:600; cursor:pointer;}
+  form button:hover{background:var(--accent-2);}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">Santhosh<span>•</span>Portfolio</div>
+    <div style="display:flex; gap:.25rem; align-items:center;">
+      <a class="link" href="#home">Home</a>
+      <a class="link" href="#about">About</a>
+      <a class="link" href="#skills">Skills</a>
+      <a class="link" href="#projects">Projects</a>
+      <a class="cta" href="#contact">Contact Me</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header id="home" class="hero">
+  <div>
+    <span class="tag">Hi there! 👋</span>
+    <h1 class="title">I’m <span class="emph">Santhosh Reddy</span><br> An <span class="emph">Aspiring Java Developer</span>, passionate about building scalable applications & smart solutions.</h1>
+    <p class="sub">CSE(Data Science) student at St. John’s College of Engineering and Technology • Interested in Startups & Innovation.</p>
+    <div class="actions" style="margin-top:12px;">
+      <a class="btn" href="#projects">Explore Projects</a>
+      <a class="btn-outline btn" href="resume.pdf" target="_blank" rel="noopener">Download CV</a>
+    </div>
+  </div>
+  <!-- Image embedded in Hero -->
+  <div class="hero-card reveal" style="text-align:center;">
+    <img src="https://i.ibb.co/j98G9FDV/Whats-App-Image.jpg" alt="Santhosh Reddy" style="width:100%; max-width:320px; border-radius:var(--radius); box-shadow:var(--shadow);" />
+  </div>
+</header>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="section reveal">
+  <h2 class="heading">About Me</h2>
+  <div>
+    <p class="sub">
+      Hello! I’m <strong>K. Santhosh Reddy</strong>, a Computer Science Engineering (Data Science) student at St. John’s College of Engineering and Technology.  
+      I aim to establish a successful startup while continuously exploring technologies in software development.
+    </p>
+    <div class="grid grid-3">
+      <div class="card">
+        <strong>Education</strong><br/>B.Tech — CSE (Data Science)<br/>St. John’s College of Engineering & Technology
+      </div>
+      <div class="card">
+        <strong>Career Goal</strong><br/>To build a startup company & deliver impactful software solutions.
+      </div>
+      <div class="card">
+        <strong>Connect</strong><br/>
+        <a href="https://github.com/" target="_blank">GitHub</a> •
+        <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="section reveal">
+  <h2 class="heading">My Skills</h2>
+  <div>
+    <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg">Java</span>
+    <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">Python</span>
+    <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg">C++ (Basics)</span>
+    <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg">SQL</span>
+    <span class="chip">DBMS</span>
+    <span class="chip">OOPs Concepts</span>
+  </div>
+</section>
+
+<!-- ===== INTERNSHIPS & CERTIFICATES ===== -->
+<section id="projects" class="section reveal">
+  <h2 class="heading">Internships & Certificates</h2>
+  <div class="grid grid-2">
+    <div class="card">
+      <strong>Internship</strong><br/>NPTEL — Internet of Things (IoT)
+    </div>
+    <div class="card">
+      <strong>Internship</strong><br/>SkillDesire — Data Science
+    </div>
+    <div class="card">
+      <strong>Certificates</strong><br/>IoT (NPTEL), Data Science (SkillDesire)
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section reveal">
+  <h2 class="heading">Contact Me</h2>
+  <div class="grid grid-2">
+    <div class="card">
+      <form onsubmit="event.preventDefault(); alert('Thanks! I will reach you soon.');">
+        <input placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="4" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+    <div class="card">
+      <p>Email: <a href="mailto:santoshreddysanthu8@gmail.com">santoshreddysanthu8@gmail.com</a></p>
+      <p>WhatsApp: <a href="https://wa.me/918008954771" target="_blank">Send Message</a></p>
+      <p>
+        <a href="https://linkedin.com/in/santhosh-reddy-116172380" target="_blank">LinkedIn</a> •
+        <a href="https://github.com/" target="_blank">GitHub</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">© <span id="y"></span> Santhosh Reddy — Built with HTML/CSS</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
